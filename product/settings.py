@@ -37,9 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework_mongoengine',
+    'rest_framework_mongoengine',    
     'rest_framework',
-    'productApi'
+    'rest_framework_swagger',    
+    'drf_yasg',
+    'productApi',
+    
 ]
 
 MIDDLEWARE = [
@@ -69,7 +72,12 @@ TEMPLATES = [
         },
     },
 ]
-
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS':
+    'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 100,
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+}
 WSGI_APPLICATION = 'product.wsgi.application'
 
 

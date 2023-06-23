@@ -15,16 +15,35 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import url  
-from django.urls import path, include
+from django.urls import path, include, re_path
 #from productApi.views import ProductViewSet
 from rest_framework import routers
 from productApi import views 
 # router = routers.DefaultRouter()
 # router.register(r'product', ProductViewSet)
+from django.conf.urls import url
+from rest_framework import permissions
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+
+from drf_yasg import openapi
+schema_view = get_schema_view(
+    openapi.Info(
+        title="Product API",
+        default_version='v1',
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
+    re_path(r'^doc(?P<format>\.json|\.yaml)$',
+            schema_view.without_ui(cache_timeout=0), name='schema-json'),
+    path('doc/', schema_view.with_ui('swagger', cache_timeout=0),
+         name='schema-swagger-ui'),
+    path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),
+         name='schema-redoc'),
     path('admin/', admin.site.urls),
     url(r'^api/products$', views.product_list),
     url(r'^api/products/(?P<pk>[0-9]+)$', views.product_detail),
-    #url(r'^api/products/published$', views.product_list_published)
 ]
