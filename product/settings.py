@@ -25,8 +25,8 @@ SECRET_KEY = 'django-insecure-@utui%wjez2@n+4q!+mlks0*dvdb%@az26c7yz!r6k^%bao^6q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ['localhost']
+CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
 
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',    
     'drf_yasg',
     'productApi',
-    
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -53,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'product.urls'
@@ -117,13 +118,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+# USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
