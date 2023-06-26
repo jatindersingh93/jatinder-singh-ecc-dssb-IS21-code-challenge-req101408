@@ -10,10 +10,11 @@ from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser 
 from rest_framework import status
 from rest_framework_swagger.views import get_swagger_view
+from datetime import datetime
 
 @api_view(['GET', 'POST', 'DELETE'])
 def product_list(request):   
-    
+    #import pdb; pdb.set_trace()
     if request.method == 'GET':
         #import pdb; pdb.set_trace()
         try: 
@@ -30,11 +31,10 @@ def product_list(request):
     elif request.method == 'POST':       
         try: 
             product_data = JSONParser().parse(request)
-            product_data['startDate'] = '2020-03-11'
-            del  product_data['isEdit'] 
-            #del  product_data['isEdit'] 
-            del product_data['isSelected']
-            del product_data['id']
+            # del  product_data['isEdit'] 
+            # del product_data['isSelected']
+            # del product_data['id']
+            #product_data['startDate'] = datetime.strptime(product_data['startDate'], '%m/%d/%Y, %H:%M:%S %p').strftime("%Y-%m-%d")
             import pdb; pdb.set_trace()
 
             product_serializer = ProductSerializer(data=product_data)
@@ -48,6 +48,7 @@ def product_list(request):
  
 @api_view(['GET', 'PUT', 'PATCH'])
 def product_detail(request, pk):
+    import pdb; pdb.set_trace()
     try: 
         product = Product.objects.get(pk=pk)
         if request.method == 'GET':             

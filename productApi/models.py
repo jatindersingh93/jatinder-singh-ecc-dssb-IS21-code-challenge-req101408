@@ -1,10 +1,10 @@
 from djongo import models
 from django import forms
+# from djangotoolbox.fields import ListField
 import datetime
 
 class Developer(models.Model):
     name = models.CharField(max_length=100)
-    email = models.EmailField()
     
     class Meta:
         abstract = True
@@ -16,7 +16,7 @@ class DeveloperForm(forms.ModelForm):
     class Meta:
         model = Developer
         fields = (
-            'name', 'email'
+            'name',
         )
 
 class Product(models.Model):
