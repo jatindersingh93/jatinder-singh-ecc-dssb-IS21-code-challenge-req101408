@@ -34,11 +34,10 @@ def product_list(request):
             # del  product_data['isEdit'] 
             # del product_data['isSelected']
             # del product_data['id']
-            #product_data['startDate'] = datetime.strptime(product_data['startDate'], '%m/%d/%Y, %H:%M:%S %p').strftime("%Y-%m-%d")
-            import pdb; pdb.set_trace()
+            product_data['developers'] = [{"name": "Skipton"}]
+            product_data['startDate'] = datetime.strptime(product_data['startDate'], '%m/%d/%Y, %H:%M:%S %p').strftime("%Y-%m-%d")
 
             product_serializer = ProductSerializer(data=product_data)
-            #import pdb; pdb.set_trace()
             if product_serializer.is_valid():
                 product_serializer.save()
                 return JsonResponse(product_serializer.data, status=status.HTTP_201_CREATED) 
@@ -48,7 +47,6 @@ def product_list(request):
  
 @api_view(['GET', 'PUT', 'PATCH'])
 def product_detail(request, pk):
-    import pdb; pdb.set_trace()
     try: 
         product = Product.objects.get(pk=pk)
         if request.method == 'GET':             
@@ -58,11 +56,14 @@ def product_detail(request, pk):
                 product.delete() 
                 return JsonResponse({'message': 'Product was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)        
         elif request.method == 'PATCH': 
+                #import pdb; pdb.set_trace()
                 product_data = JSONParser().parse(request)
+                #product_data['startDate'] = datetime.strptime(product_data['startDate'], '%m/%d/%Y, %H:%M:%S %p').strftime("%Y-%m-%d")
+                product_data['developers'] = [{"name": "Skipton"}]
                 product_serializer = ProductSerializer(data=product_data)                
                 if product_serializer.is_valid():
-                    product_serializer.save()
-                    return JsonResponse(product_serializer.data, status=status.HTTP_201_CREATED) 
+                    instance = product_serializer.update(product, product_data)
+                    return JsonResponse(product_data, status=status.HTTP_201_CREATED, safe=False) 
                 return JsonResponse(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)            
     except Exception as e:
         return JsonResponse(e, status=status.HTTP_400_BAD_REQUEST)  
