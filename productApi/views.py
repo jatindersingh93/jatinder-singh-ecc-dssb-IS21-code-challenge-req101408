@@ -11,12 +11,11 @@ from rest_framework.parsers import JSONParser
 from rest_framework import status
 from rest_framework_swagger.views import get_swagger_view
 from datetime import datetime
+import json
 
 @api_view(['GET', 'POST', 'DELETE'])
-def product_list(request):   
-    #import pdb; pdb.set_trace()
-    if request.method == 'GET':
-        #import pdb; pdb.set_trace()
+def product_list(request):       
+    if request.method == 'GET':        
         try: 
             products = Product.objects.all()
             
@@ -31,11 +30,7 @@ def product_list(request):
     elif request.method == 'POST':       
         try: 
             product_data = JSONParser().parse(request)
-            # del  product_data['isEdit'] 
-            # del product_data['isSelected']
-            # del product_data['id']
-            product_data['developers'] = [{"name": "Skipton"}]
-            product_data['startDate'] = datetime.strptime(product_data['startDate'], '%m/%d/%Y, %H:%M:%S %p').strftime("%Y-%m-%d")
+            product_data['developers'] = json.loads(product_data['developers'])
 
             product_serializer = ProductSerializer(data=product_data)
             if product_serializer.is_valid():
@@ -56,10 +51,8 @@ def product_detail(request, pk):
                 product.delete() 
                 return JsonResponse({'message': 'Product was deleted successfully!'}, status=status.HTTP_204_NO_CONTENT)        
         elif request.method == 'PATCH': 
-                #import pdb; pdb.set_trace()
                 product_data = JSONParser().parse(request)
-                #product_data['startDate'] = datetime.strptime(product_data['startDate'], '%m/%d/%Y, %H:%M:%S %p').strftime("%Y-%m-%d")
-                product_data['developers'] = [{"name": "Skipton"}]
+                product_data['developers'] = json.loads(product_data['developers'])                
                 product_serializer = ProductSerializer(data=product_data)                
                 if product_serializer.is_valid():
                     instance = product_serializer.update(product, product_data)
