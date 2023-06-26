@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url  
 from django.urls import path, include, re_path
+from django.shortcuts import redirect
 #from productApi.views import ProductViewSet
 from rest_framework import routers
 from productApi import views 
@@ -37,6 +38,7 @@ schema_view = get_schema_view(
 )
 
 urlpatterns = [
+    path('', lambda req: redirect('doc/')),
     re_path(r'^doc(?P<format>\.json|\.yaml)$',
             schema_view.without_ui(cache_timeout=0), name='schema-json'),
     path('doc/', schema_view.with_ui('swagger', cache_timeout=0),
