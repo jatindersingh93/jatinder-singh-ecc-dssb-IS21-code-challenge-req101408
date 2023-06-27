@@ -4,6 +4,8 @@ services:
     image: mongo
     ports:
       - "27017:27017"
+    networks:
+      - dev    
 
   mongo-seed:
     build: ./mongo-seed
@@ -18,4 +20,11 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - mongodb 
+      - mongodb    
+    networks:
+      - dev
+
+networks:
+  dev:
+    name: dev
+    driver: bridge

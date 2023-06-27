@@ -16,6 +16,7 @@ import json
 # @product_list will handle GET and POST calls
 @api_view(['GET', 'POST'])
 def product_list(request):       
+    #import pdb; pdb.set_trace()
     if request.method == 'GET':        
         try: 
             products = Product.objects.all()

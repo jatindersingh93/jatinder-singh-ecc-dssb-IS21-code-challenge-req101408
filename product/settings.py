@@ -88,8 +88,13 @@ WSGI_APPLICATION = 'product.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
-        'NAME': 'pro',
-        'ENFORCE_SCHEMA': True,
+        'NAME': 'pro',        
+        'ENFORCE_SCHEMA': False,
+        'CLIENT': {
+            'host': 'localhost',
+            'port': 27017,            
+        }
+        
     }
 }
 
