@@ -84,14 +84,19 @@ WSGI_APPLICATION = 'product.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+# 
+# 
+# use 'mongodb' for docker and 'localhost' for local run
+#
+#
+#
 DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'pro',        
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'localhost',
+            'host': 'mongodb',
             'port': 27017,            
         }
         

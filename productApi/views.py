@@ -16,7 +16,6 @@ import json
 # @product_list will handle GET and POST calls
 @api_view(['GET', 'POST'])
 def product_list(request):       
-    #import pdb; pdb.set_trace()
     if request.method == 'GET':        
         try: 
             products = Product.objects.all()
@@ -29,7 +28,7 @@ def product_list(request):
             return JsonResponse(products_serializer.data, safe=False)
         except Exception as e:
              return JsonResponse(e, status=status.HTTP_400_BAD_REQUEST)
-    elif request.method == 'POST':       
+    elif request.method == 'POST':  
         try: 
             product_data = JSONParser().parse(request)
             product_data['developers'] = json.loads(product_data['developers'])
