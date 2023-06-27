@@ -3,6 +3,7 @@ from django import forms
 # from djangotoolbox.fields import ListField
 import datetime
 
+# relationship model to capture Developer names
 class Developer(models.Model):
     name = models.CharField(max_length=100)
     
@@ -18,14 +19,14 @@ class DeveloperForm(forms.ModelForm):
         fields = (
             'name',
         )
-
+# Product model to handel all product keys
 class Product(models.Model):
-    name = models.CharField(max_length=100)
-    ownerName = models.CharField(max_length=100)
-    masterName = models.CharField(max_length=100)
+    name = models.CharField(max_length=500)
+    ownerName = models.CharField(max_length=500)
+    masterName = models.CharField(max_length=500)
     startDate = models.DateField()
     developers = models.ArrayField(
         model_container=Developer,
     )
-    methodology = models.CharField(max_length=100)
-    location = models.CharField(max_length=100)
+    methodology = models.CharField(max_length=500)
+    location = models.CharField(max_length=500)

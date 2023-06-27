@@ -17,17 +17,16 @@ from django.contrib import admin
 from django.conf.urls import url  
 from django.urls import path, include, re_path
 from django.shortcuts import redirect
-#from productApi.views import ProductViewSet
+
 from rest_framework import routers
 from productApi import views 
-# router = routers.DefaultRouter()
-# router.register(r'product', ProductViewSet)
 from django.conf.urls import url
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
 
 from drf_yasg import openapi
+
 schema_view = get_schema_view(
     openapi.Info(
         title="Product API",

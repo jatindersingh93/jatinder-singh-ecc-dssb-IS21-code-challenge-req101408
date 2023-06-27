@@ -13,7 +13,8 @@ from rest_framework_swagger.views import get_swagger_view
 from datetime import datetime
 import json
 
-@api_view(['GET', 'POST', 'DELETE'])
+# @product_list will handle GET and POST calls
+@api_view(['GET', 'POST'])
 def product_list(request):       
     if request.method == 'GET':        
         try: 
@@ -40,7 +41,8 @@ def product_list(request):
         except  Exception as e:
              return JsonResponse(e, status=status.HTTP_400_BAD_REQUEST)        
  
-@api_view(['GET', 'PUT', 'PATCH'])
+# Rest View to handle PUT, PATCH and DELETE calls
+@api_view(['GET', 'PUT', 'PATCH','DELETE'])
 def product_detail(request, pk):
     try: 
         product = Product.objects.get(pk=pk)
