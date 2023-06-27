@@ -1,0 +1,9 @@
+[{
+    "model": "productApi.product", 
+    "pk": 1, 
+    "fields": 
+    {"name": "jatinder2", "ownerName": "jatinder2", "masterName": "jatinder2", "startDate": "2023-06-13", 
+    "developers": "[{\"name\": \"jatinder2\"}]",
+    "methodology": "jatinder2", 
+    "location": "jatinder2"}
+}]

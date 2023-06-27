@@ -27,7 +27,8 @@ services:
       - .:/code
     links:
       - mongodb
-  mongo-seed:
-    build: ./mongo-seed
-    depends_on:
-      - mongodb
+
+  # mongo-seed:
+  #   build: ./mongo-seed
+  #   depends_on:
+  #     - mongodb

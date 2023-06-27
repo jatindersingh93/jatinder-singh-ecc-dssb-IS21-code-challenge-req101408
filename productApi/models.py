@@ -21,6 +21,7 @@ class DeveloperForm(forms.ModelForm):
         )
 # Product model to handel all product keys
 class Product(models.Model):
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=500)
     ownerName = models.CharField(max_length=500)
     masterName = models.CharField(max_length=500)
