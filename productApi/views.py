@@ -41,17 +41,26 @@ class ProductView(APIView):
             except Exception as e:
                 return JsonResponse(e, status=status.HTTP_400_BAD_REQUEST)
         elif request.method == 'POST':  
-            try: 
+            try:
+                #import pdb; pdb.set_trace()                
                 product_data = JSONParser().parse(request)
-                #product_data = request.data                
-                product_data['developers'] = json.loads(product_data['developers'])
-                del product_data['isEdit']
-                del product_data['id']
-                #serializer = self.get_serializer(data=product_data)
+                if isinstance(product_data['developers'], list):
+                    product_data['developers'] = json.dumps(product_data['developers'])
+                else:
+                    #product_data['developers'] = json.loads(product_data['developers'])
+                    product_data_arry = product_data['developers'].split(',')
+                    product_developer = []
+                    for p_d in product_data_arry:
+                        product_developer.append({'name': p_d})
+
+                    #product_data['developers'] = json.dumps(product_developer)
+                    product_data['developers'] = product_developer               
 
                 product_serializer = ProductSerializer(data=product_data)
                 if product_serializer.is_valid():
                     product_serializer.save()
+                    #import pdb; pdb.set_trace() 
+                    #problem is here we needed to return data so i can be parsed.
                     return JsonResponse(product_serializer.data, status=status.HTTP_201_CREATED) 
                 return JsonResponse(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             except  Exception as e:
@@ -78,8 +87,12 @@ class ProductView(APIView):
                     return JsonResponse(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)            
         except Exception as e:
             return JsonResponse(e, status=status.HTTP_400_BAD_REQUEST)  
-        
-            
+    
+    @api_view(['GET'])
+    def import_data(request):
+        #import pdb; pdb.set_trace()
+        return JsonResponse({'message': 'Product was deleted successfully!'}) 
+
     @api_view(['GET'])
     def product_list_published(request):
         pass

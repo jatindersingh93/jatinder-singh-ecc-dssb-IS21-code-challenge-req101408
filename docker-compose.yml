@@ -7,16 +7,23 @@ services:
       - "27017:27017"
 
   webserver:
-    build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    image: app
+    restart: always
+    command: python manage.py runserver 0.0.0.0:3000
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
-    depends_on:
+      - "3000:3000"
+    links:
       - mongodb
-
-  mongo-seed:
-    build: ./mongo-seed
     depends_on:
+      - migration
+
+  migration:
+    build: .
+    image: app
+    command: python manage.py migrate
+    volumes:
+      - .:/code
+    links:
       - mongodb

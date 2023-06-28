@@ -47,4 +47,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^api/products$', ProductView.product_list),
     url(r'^api/products/(?P<pk>[0-9]+)$', ProductView.product_detail),
+    url(r'^import_data$', ProductView.import_data),
 ]

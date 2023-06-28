@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-@utui%wjez2@n+4q!+mlks0*dvdb%@az26c7yz!r6k^%bao^6q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','*']
+ALLOWED_HOSTS = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
@@ -94,9 +94,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'djongo',
         'NAME': 'pro',        
-        'ENFORCE_SCHEMA': False,
+        'ENFORCE_SCHEMA': True,
         'CLIENT': {
-            'host': 'localhost',
+            'host': 'mongodb',
             'port': 27017,            
         }
         
