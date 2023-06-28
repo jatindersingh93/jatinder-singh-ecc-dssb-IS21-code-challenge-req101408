@@ -1,11 +1,17 @@
 version: "3.9"
-
-services:
+services: 
   mongodb:
     image: mongo
     ports:
       - "27017:27017"
+    networks:
+      - dev    
 
+  mongo-seed:
+    build: ./mongo-seed
+    depends_on:
+      - mongodb
+  
   webserver:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
@@ -14,9 +20,11 @@ services:
     ports:
       - "8000:8000"
     depends_on:
-      - mongodb
+      - mongodb    
+    networks:
+      - dev
 
-  mongo-seed:
-    build: ./mongo-seed
-    depends_on:
-      - mongodb
+networks:
+  dev:
+    name: dev
+    driver: bridge

@@ -96,7 +96,7 @@ DATABASES = {
         'NAME': 'pro',        
         'ENFORCE_SCHEMA': False,
         'CLIENT': {
-            'host': 'mongodb',
+            'host': 'localhost',
             'port': 27017,            
         }
         

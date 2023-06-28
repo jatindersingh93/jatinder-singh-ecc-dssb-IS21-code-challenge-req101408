@@ -1,4 +1,4 @@
 FROM mongo
 
-COPY init.json /init.json
-CMD mongoimport --host mongodb --db pro --collection productApi_product --type json --file /init.json --jsonArray
+COPY /dump /dump
+CMD mongorestore --host mongodb --db pro /dump --drop

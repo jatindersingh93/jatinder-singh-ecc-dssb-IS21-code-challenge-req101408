@@ -1,12 +1,25 @@
-[
-  {
-    "id": 1,
-    "name": "Guido1",
-    "ownerName": "Calla1",
-    "masterName": "Avri1l",
-    "methodology": "Persevering user-facing adapter1",
-    "location": "Boa Vista1",
-    "startDate": "2020-11-22",
-    "developers":"[{\"name\":\"Skipton\"}, {\"name\":\"Skipton2\"},{\"name\":\"Skipton3\"}]"
-  }
-]
+[{
+  "_id": {
+    "$oid": "649b778f13d4d9204fe19a2e"
+  },
+  "id": 1,
+  "name": "test3",
+  "ownerName": "test3",
+  "masterName": "test3",
+  "startDate": {
+    "$date": "2023-06-09T00:00:00.000Z"
+  },
+  "developers": [
+    {
+      "name": "test3"
+    },
+    {
+      "name": "test3"
+    },
+    {
+      "name": "test3"
+    }
+  ],
+  "methodology": "Agile",
+  "location": "git@github.com:jatindersingh93/jatinder-singh-ecc-dssb-IS21-code-challenge-req101408.git"
+}]
