@@ -8,6 +8,9 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = '__all__'
     
+    def create(self, validated_data):
+        return Product(**validated_data)
+        
     def update(self, instance, validated_data):
         """
         Update and return an existing `Snippet` instance, given the validated data.

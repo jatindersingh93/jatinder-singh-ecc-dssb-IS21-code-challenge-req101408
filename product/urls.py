@@ -19,7 +19,7 @@ from django.urls import path, include, re_path
 from django.shortcuts import redirect
 
 from rest_framework import routers
-from productApi import views 
+from productApi.views import ProductView 
 from django.conf.urls import url
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -45,6 +45,6 @@ urlpatterns = [
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),
          name='schema-redoc'),
     path('admin/', admin.site.urls),
-    url(r'^api/products$', views.product_list),
-    url(r'^api/products/(?P<pk>[0-9]+)$', views.product_detail),
+    url(r'^api/products$', ProductView.product_list),
+    url(r'^api/products/(?P<pk>[0-9]+)$', ProductView.product_detail),
 ]
