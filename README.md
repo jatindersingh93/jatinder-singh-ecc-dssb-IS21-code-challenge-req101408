@@ -2,7 +2,7 @@
 
 
 ## Description
-This Microservice provide RESTfull apis for products at ECC
+This App provides RESTfull APIs for products at ECC
 
 ## Stack Used
 Python 3.6.5
@@ -29,9 +29,10 @@ Make sure above Stack is avaiable on the machine for local installation
 ## Docker Installation
 App (Django and mongodb) can be installed using following docker commands and is available at http://localhost:3000/api/products
 This should provide two container, one for APP and another for mongo db.
-Data will be pre-popuplated from mongo-see/dump using mongorestore
+Data will be pre-populated from mongo-seed/dump using mongorestore
 ```
 docker-compose build --no-cache
+```
 ```
 docker-compose up
 ```
@@ -48,10 +49,12 @@ http://localhost:3000/api/products/<key>
 
 
 ## IMPORTANT INSTRUCTIONS
-When you add new project, make sure to add multiple developer names sepeated by comma:
-![Screen Shot 2023-06-28 at 6 43 34 PM](https://github.com/jatindersingh93/jatinder-singh-ecc-dssb-IS21-code-challenge-req101408/assets/8764259/ba0025ce-51ac-482e-9a50-c49f03fbf5ef)
 
 Keep Developer names in array when making an edit else it will break the format, this is a temp solution and needs to be modified.
+![Screen Shot 2023-06-28 at 6 43 34 PM](https://github.com/jatindersingh93/jatinder-singh-ecc-dssb-IS21-code-challenge-req101408/assets/8764259/ba0025ce-51ac-482e-9a50-c49f03fbf5ef)
+
+When you add new project, make sure to add multiple developer names sepeated by comma:
+
 
 ![Screen Shot 2023-06-28 at 6 44 51 PM](https://github.com/jatindersingh93/jatinder-singh-ecc-dssb-IS21-code-challenge-req101408/assets/8764259/ff1b24a2-f2e1-4810-9e0c-824bfc024e5a)
 
