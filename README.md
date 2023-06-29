@@ -1,5 +1,6 @@
 # Products at ECC - RESTFUL API
 
+
 ## Description
 This Microservice provide RESTfull apis for products at ECC
 
@@ -10,7 +11,7 @@ djongo==1.3.6
 MongoDB - V4 and up - installed locally or in Docker
 
 ## Local installation
-Make sure above Stack is avaiable on the machine
+Make sure above Stack is avaiable on the machine for local installation
 
 - update databse name, host, port in product/setting.py
 - Create local python enviornment using virtualenv
@@ -21,10 +22,16 @@ Make sure above Stack is avaiable on the machine
 ```
 ```
 - Migrate Database - if not already set (this will create an empty database)
-- Import initial data available under mongo-see/init_export.json or productApi_product.bson depending method used
+```
+```
+    python manage.py migrate
+```
+```
+- Import initial data available under mongo-see/init.json to pro.productApi_product
+
 
 ## Docker Installation
-App (Django and mongodb)can be installed using foolowing docker commands, it uses
+App (Django and mongodb)can be installed using foolowing docker commands and is available at http://localhost:3000/api/products
 ```
 ```
 docker-compose build --no-cache
@@ -37,7 +44,9 @@ Swagger
 http://localhost:3000/doc/
 
 List all prodcuts
-/products
+http://localhost:3000/api/products
 
 Display full information about a product
-/product/<key>
+http://localhost:3000/api/products/<key>
+
+

@@ -42,7 +42,6 @@ class ProductView(APIView):
                 return JsonResponse(e, status=status.HTTP_400_BAD_REQUEST)
         elif request.method == 'POST':  
             try:
-                #import pdb; pdb.set_trace()                
                 product_data = JSONParser().parse(request)
                 if isinstance(product_data['developers'], list):
                     product_data['developers'] = json.dumps(product_data['developers'])
@@ -64,7 +63,7 @@ class ProductView(APIView):
                     return JsonResponse(product_serializer.data, status=status.HTTP_201_CREATED) 
                 return JsonResponse(product_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             except  Exception as e:
-                return JsonResponse(e, status=status.HTTP_400_BAD_REQUEST)        
+                return JsonResponse(e, status=status.HTTP_400_BAD_REQUEST, safe=False)        
     
     # Rest View to handle PUT, PATCH and DELETE calls
     @api_view(['GET', 'PUT', 'PATCH','DELETE'])
