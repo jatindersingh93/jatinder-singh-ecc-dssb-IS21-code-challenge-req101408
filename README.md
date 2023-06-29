@@ -31,10 +31,12 @@ Make sure above Stack is avaiable on the machine for local installation
 
 
 ## Docker Installation
-App (Django and mongodb)can be installed using foolowing docker commands and is available at http://localhost:3000/api/products
-```
+App (Django and mongodb) can be installed using following docker commands and is available at http://localhost:3000/api/products
+This should provide two container, one for APP and another for mongo db.
+Data will be pre-popuplated from mongo-see/dump using mongorestore
 ```
 docker-compose build --no-cache
+```
 docker-compose up
 ```
 ```
@@ -49,4 +51,6 @@ http://localhost:3000/api/products
 Display full information about a product
 http://localhost:3000/api/products/<key>
 
+
+## IMPORTANT INSTRUCTIONS
 
