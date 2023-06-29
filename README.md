@@ -17,15 +17,11 @@ Make sure above Stack is avaiable on the machine for local installation
 - Create local python enviornment using virtualenv
 - run following command to install requirments
 ```
-```
     pip install -r requirements.txt
-```
 ```
 - Migrate Database - if not already set (this will create an empty database)
 ```
-```
     python manage.py migrate
-```
 ```
 - Import initial data available under mongo-see/init.json to pro.productApi_product
 
@@ -38,7 +34,6 @@ Data will be pre-popuplated from mongo-see/dump using mongorestore
 docker-compose build --no-cache
 ```
 docker-compose up
-```
 ```
 
 ## End points
@@ -53,4 +48,10 @@ http://localhost:3000/api/products/<key>
 
 
 ## IMPORTANT INSTRUCTIONS
+When you add new project, make sure to add multiple developer names sepeated by comma:
+![Screen Shot 2023-06-28 at 6 43 34 PM](https://github.com/jatindersingh93/jatinder-singh-ecc-dssb-IS21-code-challenge-req101408/assets/8764259/ba0025ce-51ac-482e-9a50-c49f03fbf5ef)
+
+Keep Developer names in array when making an edit else it will break the format, this is a temp solution and needs to be modified.
+
+![Screen Shot 2023-06-28 at 6 44 51 PM](https://github.com/jatindersingh93/jatinder-singh-ecc-dssb-IS21-code-challenge-req101408/assets/8764259/ff1b24a2-f2e1-4810-9e0c-824bfc024e5a)
 
